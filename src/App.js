@@ -29,14 +29,14 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({persons});
+    this.setState({ persons });
   }
 
   deletePersonHandler = (personIndex) => {
     // const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
-    this.setState({persons});
+    this.setState({ persons });
   };
 
   togglePersonsHandler = () => {
@@ -46,7 +46,8 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -64,19 +65,30 @@ class App extends Component {
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
-                key={person.id} 
-                changed={(event) => this.nameChangedHandler(event, person.id)}/>
+                key={person.id}
+                changed={(event) => this.nameChangedHandler(event, person.id)} />
             )
           }
         </div>
       );
+
+      style.backgroundColor = 'red';
+    }
+
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
+          <p className={classes.join(' ')}>This is really working!</p>
         </header>
         <br />
         <button
