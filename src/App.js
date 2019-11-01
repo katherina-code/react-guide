@@ -71,7 +71,7 @@ class App extends Component {
       assignedClasses.push(classes.red);
     }
 
-    if (this.state.persons.length <= 1) {
+    if (this.state.persons.length <= 1) {  
       assignedClasses.push(classes.bold);
     }
 
