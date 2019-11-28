@@ -11,12 +11,13 @@ class App extends Component {
 
   state = {
     persons: [
-      { id: 'frfr', name: 'Max', age: '22' },
-      { id: 'frfr1', name: 'Kate', age: '23' },
-      { id: 'frfr2', name: 'Elena', age: '24' },
+      { id: 'frfr', name: 'Max', age: 22 },
+      { id: 'frfr1', name: 'Kate', age: 23 },
+      { id: 'frfr2', name: 'Elena', age: 24 },
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter: 0
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -57,7 +58,12 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({ persons });
+    this.setState((prevState, props) => {
+      return { 
+        persons, 
+        changeCounter: prevState.changeCounter + 1 
+      }
+    });
   }
 
   deletePersonHandler = (personIndex) => {
