@@ -18,6 +18,7 @@ class Person extends Component {
         console.log('[Person.js] rendering...')
         return (
             <div className={classes.Person}>
+                {this.props.isAuth ? <p>Authenticated!</p> : <p>Please log in</p>}
                 <p onClick={this.props.click}>I'm {this.props.name} and I am {this.props.age} years old!</p>
                 <p>{this.props.children}</p>
                 <input
@@ -36,7 +37,7 @@ Person.propTypes = {
     click: PropTypes.func,
     name: PropTypes.string,
     age: PropTypes.number,
-    changed: PropTypes.func 
+    changed: PropTypes.func
 };
 
 export default Person; 
